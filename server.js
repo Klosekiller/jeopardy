@@ -14,7 +14,7 @@ app.use('/api', gameRoutes);
 
 // Serve the compiled HTML files from the 'dist' directory
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Example additional route
