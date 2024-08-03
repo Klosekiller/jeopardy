@@ -40,6 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Example JSON data embedded as a JavaScript object
+  const categories = [
+    {
+      category: "Science",
+      questions: [
+        { question: "What is the chemical symbol for water?", answer: "H2O" },
+        { question: "What planet is known as the Red Planet?", answer: "Mars" }
+      ]
+    },
+    {
+      category: "History",
+      questions: [
+        { question: "Who was the first President of the United States?", answer: "George Washington" },
+        { question: "In what year did the Titanic sink?", answer: "1912" }
+      ]
+    }
+    // Add more categories and questions as needed
+  ];
+
   // Player setup
   setPlayersButton.addEventListener('click', () => {
     const playerCount = parseInt(playerCountInput.value, 10);
@@ -81,133 +100,120 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update player stats display
     updatePlayerStats();
 
-    // Fetch categories and questions
-    fetch('/api/categories')
-      .then(response => {
-        if (!response.ok) {
-          return response.text().then(text => {
-            throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Fetched categories:', data);
-        const categoriesDiv = document.getElementById('categories');
+    // Load categories and questions from the embedded data
+    const categoriesDiv = document.getElementById('categories');
+    
+    categories.forEach(category => {
+      // Create a container for each category
+      const categoryDiv = document.createElement('div');
+      categoryDiv.className = 'category';
+      
+      // Create and append category title
+      const categoryTitle = document.createElement('h2');
+      categoryTitle.textContent = category.category;
+      categoryDiv.appendChild(categoryTitle);
+
+      // Loop through each question in the category
+      category.questions.forEach((q, index) => {
+        // Create a container for each question
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
         
-        data.forEach(category => {
-          // Create a container for each category
-          const categoryDiv = document.createElement('div');
-          categoryDiv.className = 'category';
-          
-          // Create and append category title
-          const categoryTitle = document.createElement('h2');
-          categoryTitle.textContent = category.category;
-          categoryDiv.appendChild(categoryTitle);
-
-          // Loop through each question in the category
-          category.questions.forEach((q, index) => {
-            // Create a container for each question
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            
-            // Set the text content as a money value
-            const moneyValue = `$${(index + 1) * 100}`;
-            questionDiv.textContent = moneyValue;
-            questionDiv.dataset.question = q.question; // Store the question
-            questionDiv.dataset.answer = q.answer; // Store the answer
-            questionDiv.dataset.moneyValue = moneyValue; // Store the money value
-            questionDiv.dataset.category = category.category; // Store the category name
-            
-            // Add event listener to show the question in a modal
-            questionDiv.addEventListener('click', () => {
-              if (!questionDiv.classList.contains('disabled') && !questionDiv.classList.contains('correct')) {
-                modalTitle.textContent = 'Question';
-                questionText.textContent = q.question;
-                answerInput.value = ''; // Clear the previous answer
-                submitAnswer.dataset.correctAnswer = q.answer; // Store the correct answer
-                submitAnswer.dataset.moneyValue = moneyValue; // Store the money value
-                submitAnswer.dataset.category = category.category; // Store the category name
-                submitAnswer.dataset.questionDivId = questionDiv.dataset.moneyValue; // Store the question money value
-                modal.style.display = 'block';
-                answerInput.focus(); // Focus on the input field
-              }
-            });
-
-            // Append the question div to the category div
-            categoryDiv.appendChild(questionDiv);
-          });
-
-          // Append the category div to the main categories div
-          categoriesDiv.appendChild(categoryDiv);
+        // Set the text content as a money value
+        const moneyValue = `$${(index + 1) * 100}`;
+        questionDiv.textContent = moneyValue;
+        questionDiv.dataset.question = q.question; // Store the question
+        questionDiv.dataset.answer = q.answer; // Store the answer
+        questionDiv.dataset.moneyValue = moneyValue; // Store the money value
+        questionDiv.dataset.category = category.category; // Store the category name
+        
+        // Add event listener to show the question in a modal
+        questionDiv.addEventListener('click', () => {
+          if (!questionDiv.classList.contains('disabled') && !questionDiv.classList.contains('correct')) {
+            modalTitle.textContent = 'Question';
+            questionText.textContent = q.question;
+            answerInput.value = ''; // Clear the previous answer
+            submitAnswer.dataset.correctAnswer = q.answer; // Store the correct answer
+            submitAnswer.dataset.moneyValue = moneyValue; // Store the money value
+            submitAnswer.dataset.category = category.category; // Store the category name
+            submitAnswer.dataset.questionDivId = questionDiv.dataset.moneyValue; // Store the question money value
+            modal.style.display = 'block';
+            answerInput.focus(); // Focus on the input field
+          }
         });
 
-        // Handle answer submission
-        function handleAnswerSubmission() {
-          const userAnswer = answerInput.value.trim().toLowerCase();
-          const correctAnswer = submitAnswer.dataset.correctAnswer.toLowerCase();
-          const moneyValue = parseInt(submitAnswer.dataset.moneyValue.replace('$', ''), 10);
-          const categoryName = submitAnswer.dataset.category;
+        // Append the question div to the category div
+        categoryDiv.appendChild(questionDiv);
+      });
 
-          const questionDiv = Array.from(document.querySelectorAll('.question'))
-            .find(div => div.dataset.moneyValue === submitAnswer.dataset.moneyValue && div.dataset.category === categoryName);
+      // Append the category div to the main categories div
+      categoriesDiv.appendChild(categoryDiv);
+    });
 
-          if (userAnswer.includes(correctAnswer)) {
-            players[currentPlayerIndex].money += moneyValue;
-            alert('Correct!');
+    // Handle answer submission
+    function handleAnswerSubmission() {
+      const userAnswer = answerInput.value.trim().toLowerCase();
+      const correctAnswer = submitAnswer.dataset.correctAnswer.toLowerCase();
+      const moneyValue = parseInt(submitAnswer.dataset.moneyValue.replace('$', ''), 10);
+      const categoryName = submitAnswer.dataset.category;
 
-            if (questionDiv) {
-              questionDiv.classList.add('correct');
-              questionDiv.classList.remove('disabled');
-            }
+      const questionDiv = Array.from(document.querySelectorAll('.question'))
+        .find(div => div.dataset.moneyValue === submitAnswer.dataset.moneyValue && div.dataset.category === categoryName);
 
-            // Continue the same player's turn
-          } else {
-            alert(`Incorrect. The correct answer was: ${submitAnswer.dataset.correctAnswer}`);
+      if (userAnswer.includes(correctAnswer)) {
+        players[currentPlayerIndex].money += moneyValue;
+        alert('Correct!');
 
-            if (questionDiv) {
-              questionDiv.classList.add('disabled');
-            }
-          }
-
-          // Move to the next player
-          if (!userAnswer.includes(correctAnswer)) {
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-          }
-          updatePlayerStats();
-
-          modal.style.display = 'none';
-
-          // Check if it's the last question
-          if (document.querySelectorAll('.question:not(.correct):not(.disabled)').length === 0) {
-            showEndGameModal();
-          }
+        if (questionDiv) {
+          questionDiv.classList.add('correct');
+          questionDiv.classList.remove('disabled');
         }
 
-        submitAnswer.addEventListener('click', () => {
-          handleAnswerSubmission();
-        });
+        // Continue the same player's turn
+      } else {
+        alert(`Incorrect. The correct answer was: ${submitAnswer.dataset.correctAnswer}`);
 
-        // Handle Enter key press for answer submission
-        answerInput.addEventListener('keypress', event => {
-          if (event.key === 'Enter') {
-            handleAnswerSubmission();
-          }
-        });
+        if (questionDiv) {
+          questionDiv.classList.add('disabled');
+        }
+      }
 
-        // Handle closing the modal
-        closeModal.addEventListener('click', () => {
-          modal.style.display = 'none';
-        });
+      // Move to the next player
+      if (!userAnswer.includes(correctAnswer)) {
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+      }
+      updatePlayerStats();
 
-        // Close modal if the user clicks outside of the modal content
-        window.addEventListener('click', event => {
-          if (event.target === modal) {
-            modal.style.display = 'none';
-          }
-        });
-      })
-      .catch(error => console.error('Error fetching categories:', error));
+      modal.style.display = 'none';
+
+      // Check if it's the last question
+      if (document.querySelectorAll('.question:not(.correct):not(.disabled)').length === 0) {
+        showEndGameModal();
+      }
+    }
+
+    submitAnswer.addEventListener('click', () => {
+      handleAnswerSubmission();
+    });
+
+    // Handle Enter key press for answer submission
+    answerInput.addEventListener('keypress', event => {
+      if (event.key === 'Enter') {
+        handleAnswerSubmission();
+      }
+    });
+
+    // Handle closing the modal
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Close modal if the user clicks outside of the modal content
+    window.addEventListener('click', event => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
   });
 
   function updatePlayerStats() {
