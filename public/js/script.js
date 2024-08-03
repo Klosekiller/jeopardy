@@ -43,21 +43,132 @@ document.addEventListener('DOMContentLoaded', () => {
   // Example JSON data embedded as a JavaScript object
   const categories = [
     {
-      category: "Science",
-      questions: [
-        { question: "What is the chemical symbol for water?", answer: "H2O" },
-        { question: "What planet is known as the Red Planet?", answer: "Mars" }
+      "category": "World Capitals",
+      "questions": [
+        {
+          "question": "This city is the capital of Japan.",
+          "answer": "Tokyo"
+        },
+        {
+          "question": "This city is the capital of Australia.",
+          "answer": "Canberra"
+        },
+        {
+          "question": "This city is the capital of Canada.",
+          "answer": "Ottawa"
+        },
+        {
+          "question": "This city is the capital of Brazil.",
+          "answer": "Brasília"
+        },
+        {
+          "question": "This city is the capital of South Korea.",
+          "answer": "Seoul"
+        }
       ]
     },
     {
-      category: "History",
-      questions: [
-        { question: "Who was the first President of the United States?", answer: "George Washington" },
-        { question: "In what year did the Titanic sink?", answer: "1912" }
+      "category": "Mythology",
+      "questions": [
+        {
+          "question": "This Greek god is known as the king of the gods.",
+          "answer": "Zeus"
+        },
+        {
+          "question": "This Norse god wields a hammer called Mjölnir.",
+          "answer": "Thor"
+        },
+        {
+          "question": "This Egyptian god is known for having the head of a falcon.",
+          "answer": "Horus"
+        },
+        {
+          "question": "This Roman goddess is equivalent to the Greek goddess Athena.",
+          "answer": "Minerva"
+        },
+        {
+          "question": "This Hindu god is known as the destroyer.",
+          "answer": "Shiva"
+        }
+      ]
+    },
+    {
+      "category": "Inventions",
+      "questions": [
+        {
+          "question": "This inventor is credited with creating the first practical telephone.",
+          "answer": "Alexander Graham Bell"
+        },
+        {
+          "question": "This invention by Johannes Gutenberg revolutionized the printing industry.",
+          "answer": "Printing press"
+        },
+        {
+          "question": "This American inventor is known for the light bulb.",
+          "answer": "Thomas Edison"
+        },
+        {
+          "question": "This invention, created by the Wright brothers, took flight in 1903.",
+          "answer": "Airplane"
+        },
+        {
+          "question": "This scientist developed the theory of relativity.",
+          "answer": "Albert Einstein"
+        }
+      ]
+    },
+    {
+      "category": "Music",
+      "questions": [
+        {
+          "question": "This band released the album 'Abbey Road' in 1969.",
+          "answer": "The Beatles"
+        },
+        {
+          "question": "This composer is known for his Symphony No. 5 in C Minor.",
+          "answer": "Ludwig van Beethoven"
+        },
+        {
+          "question": "This artist is known as the 'Queen of Pop'.",
+          "answer": "Madonna"
+        },
+        {
+          "question": "This classical composer wrote 'The Four Seasons'.",
+          "answer": "Antonio Vivaldi"
+        },
+        {
+          "question": "This artist's real name is Stefani Joanne Angelina Germanotta.",
+          "answer": "Lady Gaga"
+        }
+      ]
+    },
+    {
+      "category": "Technology",
+      "questions": [
+        {
+          "question": "This company created the iPhone.",
+          "answer": "Apple"
+        },
+        {
+          "question": "This programming language is known for its snake logo.",
+          "answer": "Python"
+        },
+        {
+          "question": "This technology company was founded by Bill Gates and Paul Allen.",
+          "answer": "Microsoft"
+        },
+        {
+          "question": "This social media platform is known for its bird logo.",
+          "answer": "Twitter"
+        },
+        {
+          "question": "This search engine is known for its colorful logo and doodles.",
+          "answer": "Google"
+        }
       ]
     }
-    // Add more categories and questions as needed
   ];
+
 
   // Player setup
   setPlayersButton.addEventListener('click', () => {
