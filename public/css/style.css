@@ -1,0 +1,202 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #3579c2;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Categories and questions */
+#categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.category {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 15%;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.category h2 {
+  margin-top: 0;
+}
+
+.question {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  width: 100%; /* Ensure full width of the container */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.question:hover {
+  background-color: #eee;
+}
+
+.question.correct {
+  background-color: #d4edda; /* Light green background for correct answers */
+  color: #155724; /* Dark green text for correct answers */
+  cursor: not-allowed;
+}
+
+.question.disabled {
+  background-color: #f8d7da; /* Light red background for disabled questions */
+  color: #721c24; /* Dark red text for disabled questions */
+  cursor: not-allowed;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Center horizontally and position from the top */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Limit the maximum width */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+  position: relative; /* Position relative for the button alignment */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* End Game Modal styles */
+#endGameModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+#endGameModalContent {
+  background-color: #fefefe;
+  margin: 15% auto; /* Center horizontally and position from the top */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Limit the maximum width */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+  position: relative; /* Position relative for the button alignment */
+}
+
+.endGameClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.endGameClose:hover,
+.endGameClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#endGameTitle {
+  margin-top: 0;
+  text-align: center;
+}
+
+#endGameText {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#endGameModal button {
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+#playAgain, #mainMenu {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#playAgain:hover, #mainMenu:hover {
+  background-color: #0056b3;
+}
+
+/* Player setup and game elements */
+#playerSetup, #playersNames {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#playerNameInputs {
+  margin: 10px 0;
+}
+
+#playerNameInputs input {
+  display: block;
+  margin: 5px auto;
+  padding: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#currentPlayer {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#playersMoney {
+  margin-top: 20px;
+}

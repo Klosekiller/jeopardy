@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title Jeopardy Game
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='/js/script.js', defer)
+  body
+    header
+      h1 Jeopardy Game
+
+    #playerSetup
+      label(for='playerCount') Number of Players:
+      input(type='number', id='playerCount', min='1')
+      button(id='setPlayers') Set Players
+
+    #playersNames(style='display:none')
+      #playerNameInputs
+      button(id='startGame') Start Game
+
+    #playersInfo
+      h2#currentTurn Current Turn: None
+      #playersList
+      #playersMoney
+
+    #categories
+
+    #questionModal(class='modal')
+      .modal-content
+        span.close &times;
+        h2#modalTitle Question
+        p#questionText
+        input#answerInput(type='text', placeholder='Type your answer here...')
+        button#submitAnswer Submit
+
+    #endGameModal(class='modal')
+      .modal-content
+        h2#endGameModalTitle Game Over
+        div#endGameModalContent
+        button#playAgain Play Again
+        button#mainMenu Main Menu
