@@ -41,133 +41,261 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Example JSON data embedded as a JavaScript object
+  // const categories = [
+  //   {
+  //     "category": "World Capitals",
+  //     "questions": [
+  //       {
+  //         "question": "This city is the capital of Japan.",
+  //         "answer": "Tokyo"
+  //       },
+  //       {
+  //         "question": "This city is the capital of Australia.",
+  //         "answer": "Canberra"
+  //       },
+  //       {
+  //         "question": "This city is the capital of Canada.",
+  //         "answer": "Ottawa"
+  //       },
+  //       {
+  //         "question": "This city is the capital of Brazil.",
+  //         "answer": "Brasília"
+  //       },
+  //       {
+  //         "question": "This city is the capital of South Korea.",
+  //         "answer": "Seoul"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "category": "Mythology",
+  //     "questions": [
+  //       {
+  //         "question": "This Greek god is known as the king of the gods.",
+  //         "answer": "Zeus"
+  //       },
+  //       {
+  //         "question": "This Norse god wields a hammer called Mjölnir.",
+  //         "answer": "Thor"
+  //       },
+  //       {
+  //         "question": "This Egyptian god is known for having the head of a falcon.",
+  //         "answer": "Horus"
+  //       },
+  //       {
+  //         "question": "This Roman goddess is equivalent to the Greek goddess Athena.",
+  //         "answer": "Minerva"
+  //       },
+  //       {
+  //         "question": "This Hindu god is known as the destroyer.",
+  //         "answer": "Shiva"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "category": "Inventions",
+  //     "questions": [
+  //       {
+  //         "question": "This inventor is credited with creating the first practical telephone.",
+  //         "answer": "Alexander Graham Bell"
+  //       },
+  //       {
+  //         "question": "This invention by Johannes Gutenberg revolutionized the printing industry.",
+  //         "answer": "Printing press"
+  //       },
+  //       {
+  //         "question": "This American inventor is known for the light bulb.",
+  //         "answer": "Thomas Edison"
+  //       },
+  //       {
+  //         "question": "This invention, created by the Wright brothers, took flight in 1903.",
+  //         "answer": "Airplane"
+  //       },
+  //       {
+  //         "question": "This scientist developed the theory of relativity.",
+  //         "answer": "Albert Einstein"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "category": "Music",
+  //     "questions": [
+  //       {
+  //         "question": "This band released the album 'Abbey Road' in 1969.",
+  //         "answer": "The Beatles"
+  //       },
+  //       {
+  //         "question": "This composer is known for his Symphony No. 5 in C Minor.",
+  //         "answer": "Ludwig van Beethoven"
+  //       },
+  //       {
+  //         "question": "This artist is known as the 'Queen of Pop'.",
+  //         "answer": "Madonna"
+  //       },
+  //       {
+  //         "question": "This classical composer wrote 'The Four Seasons'.",
+  //         "answer": "Antonio Vivaldi"
+  //       },
+  //       {
+  //         "question": "This artist's real name is Stefani Joanne Angelina Germanotta.",
+  //         "answer": "Lady Gaga"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "category": "Technology",
+  //     "questions": [
+  //       {
+  //         "question": "This company created the iPhone.",
+  //         "answer": "Apple"
+  //       },
+  //       {
+  //         "question": "This programming language is known for its snake logo.",
+  //         "answer": "Python"
+  //       },
+  //       {
+  //         "question": "This technology company was founded by Bill Gates and Paul Allen.",
+  //         "answer": "Microsoft"
+  //       },
+  //       {
+  //         "question": "This social media platform is known for its bird logo.",
+  //         "answer": "Twitter"
+  //       },
+  //       {
+  //         "question": "This search engine is known for its colorful logo and doodles.",
+  //         "answer": "Google"
+  //       }
+  //     ]
+  //   }
+  // ];
   const categories = [
     {
-      "category": "World Capitals",
+      "category": "Biblical Capitals",
       "questions": [
         {
-          "question": "This city is the capital of Japan.",
-          "answer": "Tokyo"
+          "question": "This city was the capital of the ancient kingdom of Israel.",
+          "answer": "Jerusalem"
         },
         {
-          "question": "This city is the capital of Australia.",
-          "answer": "Canberra"
+          "question": "This city became the capital of the northern kingdom after the split of Israel.",
+          "answer": "Samaria"
         },
         {
-          "question": "This city is the capital of Canada.",
-          "answer": "Ottawa"
+          "question": "This city is known as the birthplace of Jesus.",
+          "answer": "Bethlehem"
         },
         {
-          "question": "This city is the capital of Brazil.",
-          "answer": "Brasília"
+          "question": "This city is where Paul the Apostle wrote many of his epistles.",
+          "answer": "Rome"
         },
         {
-          "question": "This city is the capital of South Korea.",
-          "answer": "Seoul"
+          "question": "This city was known for its walls that fell after being encircled for seven days.",
+          "answer": "Jericho"
         }
       ]
     },
     {
-      "category": "Mythology",
+      "category": "Reformation Leaders",
       "questions": [
         {
-          "question": "This Greek god is known as the king of the gods.",
-          "answer": "Zeus"
+          "question": "This German monk is known for initiating the Protestant Reformation.",
+          "answer": "Martin Luther"
         },
         {
-          "question": "This Norse god wields a hammer called Mjölnir.",
-          "answer": "Thor"
+          "question": "This French theologian is a major figure in the Reformation and wrote 'Institutes of the Christian Religion'.",
+          "answer": "John Calvin"
         },
         {
-          "question": "This Egyptian god is known for having the head of a falcon.",
-          "answer": "Horus"
+          "question": "This Scottish minister founded Presbyterianism.",
+          "answer": "John Knox"
         },
         {
-          "question": "This Roman goddess is equivalent to the Greek goddess Athena.",
-          "answer": "Minerva"
+          "question": "This Swiss reformer is known for his work in Zurich and his disagreements with Luther.",
+          "answer": "Ulrich Zwingli"
         },
         {
-          "question": "This Hindu god is known as the destroyer.",
-          "answer": "Shiva"
+          "question": "This English theologian translated the Bible into English and was executed for heresy.",
+          "answer": "William Tyndale"
         }
       ]
     },
     {
-      "category": "Inventions",
+      "category": "Christian Doctrines",
       "questions": [
         {
-          "question": "This inventor is credited with creating the first practical telephone.",
-          "answer": "Alexander Graham Bell"
+          "question": "This doctrine emphasizes God's sovereignty in salvation.",
+          "answer": "Predestination"
         },
         {
-          "question": "This invention by Johannes Gutenberg revolutionized the printing industry.",
-          "answer": "Printing press"
+          "question": "This Reformed belief states that the sacraments are signs and seals of God's covenant.",
+          "answer": "Covenant Theology"
         },
         {
-          "question": "This American inventor is known for the light bulb.",
-          "answer": "Thomas Edison"
+          "question": "This doctrine teaches that Scripture alone is the supreme authority in all matters of doctrine and practice.",
+          "answer": "Sola Scriptura"
         },
         {
-          "question": "This invention, created by the Wright brothers, took flight in 1903.",
-          "answer": "Airplane"
+          "question": "This doctrine teaches that Christ's atonement is limited to the elect.",
+          "answer": "Limited Atonement"
         },
         {
-          "question": "This scientist developed the theory of relativity.",
-          "answer": "Albert Einstein"
+          "question": "This concept in Reformed theology refers to God's grace that irresistibly draws the elect to salvation.",
+          "answer": "Irresistible Grace"
         }
       ]
     },
     {
-      "category": "Music",
+      "category": "Church History",
       "questions": [
         {
-          "question": "This band released the album 'Abbey Road' in 1969.",
-          "answer": "The Beatles"
+          "question": "This council affirmed the doctrine of the Trinity and the full divinity of the Son.",
+          "answer": "Council of Nicaea"
         },
         {
-          "question": "This composer is known for his Symphony No. 5 in C Minor.",
-          "answer": "Ludwig van Beethoven"
+          "question": "This event in 1517 is often considered the start of the Protestant Reformation.",
+          "answer": "Nailing of the 95 Theses"
         },
         {
-          "question": "This artist is known as the 'Queen of Pop'.",
-          "answer": "Madonna"
+          "question": "This period was marked by intense theological debate and the emergence of Protestant denominations.",
+          "answer": "The Reformation"
         },
         {
-          "question": "This classical composer wrote 'The Four Seasons'.",
-          "answer": "Antonio Vivaldi"
+          "question": "This event in 1054 led to the split between the Eastern Orthodox and Roman Catholic Churches.",
+          "answer": "The Great Schism"
         },
         {
-          "question": "This artist's real name is Stefani Joanne Angelina Germanotta.",
-          "answer": "Lady Gaga"
+          "question": "This 16th-century meeting aimed to address the issues raised by the Reformation and reform the Catholic Church.",
+          "answer": "The Council of Trent"
         }
       ]
     },
     {
-      "category": "Technology",
+      "category": "Christian Literature",
       "questions": [
         {
-          "question": "This company created the iPhone.",
-          "answer": "Apple"
+          "question": "This book by John Bunyan is an allegory of the Christian life.",
+          "answer": "The Pilgrim's Progress"
         },
         {
-          "question": "This programming language is known for its snake logo.",
-          "answer": "Python"
+          "question": "This 16th-century book by John Calvin outlines Reformed theology.",
+          "answer": "Institutes of the Christian Religion"
         },
         {
-          "question": "This technology company was founded by Bill Gates and Paul Allen.",
-          "answer": "Microsoft"
+          "question": "This classic book by C.S. Lewis explores the problem of pain and suffering in the world.",
+          "answer": "The Problem of Pain"
         },
         {
-          "question": "This social media platform is known for its bird logo.",
-          "answer": "Twitter"
+          "question": "This book by Augustine of Hippo reflects on his life and conversion to Christianity.",
+          "answer": "Confessions"
         },
         {
-          "question": "This search engine is known for its colorful logo and doodles.",
-          "answer": "Google"
+          "question": "This book by Jonathan Edwards is considered a masterpiece of American Puritanism.",
+          "answer": "Sinners in the Hands of an Angry God"
         }
       ]
     }
   ];
+
 
 
   // Player setup
